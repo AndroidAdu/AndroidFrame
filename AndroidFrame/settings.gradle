@@ -1,1 +1,1 @@
-include ':app'
+include ':app', ':library_base_t_mvp', ':library_permission'
