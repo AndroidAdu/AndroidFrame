@@ -51,6 +51,13 @@ public class PermissionFragment extends DialogFragment {
     }
 
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        //优化项目
+        getDialog().getWindow().getDecorView().setVisibility(View.INVISIBLE);
+    }
+
     /**
      * 权限获取结果
      */
