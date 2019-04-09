@@ -1,13 +1,13 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion COMPILE_SDK as int
 
 
 
     defaultConfig {
-        minSdkVersion 17
-        targetSdkVersion 28
+        minSdkVersion MIN_SDK
+        targetSdkVersion TARGET_SDK
         versionCode 1
         versionName "1.0"
 
@@ -21,6 +21,8 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    buildToolsVersion BUILD_TOOLS
 
 }
 

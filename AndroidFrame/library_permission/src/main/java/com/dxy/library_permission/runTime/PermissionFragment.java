@@ -2,11 +2,16 @@ package com.dxy.library_permission.runTime;
 
 import android.animation.Animator;
 import android.annotation.TargetApi;
+import android.app.AlertDialog;
 import android.app.DialogFragment;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
+import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +20,7 @@ import com.dxy.library_permission.R;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
 
 
 /**
@@ -29,6 +35,8 @@ public class PermissionFragment extends DialogFragment {
 
     public static final String PermissionKEY="PermissionArray";
     private  static  final int PermissonCode=1;
+
+    private boolean permissionSataus;
 
     private PermissionDialogClickListener permissionListener;
 
@@ -47,6 +55,7 @@ public class PermissionFragment extends DialogFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         String [] PermissionArray=getArguments().getStringArray(PermissionKEY);
+        permissionSataus= ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), PermissionArray[0]);
         requestPermission(PermissionArray);
     }
 
@@ -69,7 +78,11 @@ public class PermissionFragment extends DialogFragment {
                 if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
                     requestPermissionSuccess();
                 }else{
-                    requestPermissionFailure();
+                    if(!ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), permissions[0])&&!permissionSataus){
+                        rqeustRepeatPermission(permissions[0]);
+                    }else{
+                        requestPermissionFailure();
+                    }
                 }
             }else{
                 requestPermissionFailure();
@@ -110,6 +123,38 @@ public class PermissionFragment extends DialogFragment {
 
     }
 
+    /**
+     * 二次授权
+     * @param permission
+     */
+    private void rqeustRepeatPermission(String permission){
+        String permissionName=PermissionUtils.getPermissionName(permission);
+        new AlertDialog.Builder(getActivity(),R.style.Theme_AppCompat_Light_Dialog_Alert)
+                .setMessage("此功能需要"+permissionName+"，是否去授权？")
+                .setPositiveButton("去授权", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                        Uri uri = Uri.fromParts("package", getActivity().getPackageName(), null);
+                        intent.setData(uri);
+                        startActivity(intent);
+                        dialog.dismiss();
+                        dismiss();
+                    }
+                }).setNegativeButton("取消", new DialogInterface.OnClickListener() {//添加返回按钮
+            @Override
+            public void onClick(DialogInterface dialog, int which) {//响应事件
+                dialog.dismiss();
+                requestPermissionFailure();
+            }
+        }).setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                dialog.dismiss();
+                requestPermissionFailure();
+            }
+        }).show();
+    }
 
 
 

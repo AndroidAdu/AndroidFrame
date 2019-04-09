@@ -29,6 +29,25 @@ public class PermissionUtils {
     public static final String LOCATION = Manifest.permission.LOCATION_HARDWARE;
 
 
+    public static String getPermissionName(String permission){
+        switch (permission){
+            case CAMERA:
+                return "相机权限";
+            case CALL:
+                return "电话权限";
+            case WRITE:
+                return "存储权限";
+            case READ:
+                return "存储权限";
+            case CONTACTS:
+                return "联系人权限";
+            case LOCATION:
+                return "位置权限";
+        }
+        return "";
+    }
+
+
     /**
      * 检查权限
      */

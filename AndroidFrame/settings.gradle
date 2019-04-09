@@ -1,1 +1,1 @@
-include ':app', ':library_base_t_mvp', ':library_permission', ':liibrary_rule'
+include ':app', ':library_base_t_mvp', ':library_permission', ':liibrary_rule', ':library_utils', ':library_thread'
