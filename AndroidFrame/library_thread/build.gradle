@@ -4,7 +4,6 @@ android {
     compileSdkVersion COMPILE_SDK as int
 
 
-
     defaultConfig {
         minSdkVersion MIN_SDK
         targetSdkVersion TARGET_SDK
@@ -28,9 +27,11 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
-    implementation 'com.android.support:appcompat-v7:28.0.0'
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+
+    implementation 'androidx.appcompat:appcompat:1.0.0-beta01'
+
+    androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
 }
