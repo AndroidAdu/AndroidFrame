@@ -1,6 +1,5 @@
-package com.dxy.library_permission.runTime;
+package com.dxy.library_permission;
 
-import android.animation.Animator;
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.app.DialogFragment;
@@ -16,15 +15,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.dxy.library_permission.R;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 
 
 /**
- * Created by John on 2019/3/25.
+ * Created by duxueyang on 2019/3/25.
  *  在DialogFragment中获取整个权限结果
  *
  *  权限获取弹窗

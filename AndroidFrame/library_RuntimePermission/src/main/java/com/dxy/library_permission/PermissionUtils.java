@@ -1,4 +1,4 @@
-package com.dxy.library_permission.runTime;
+package com.dxy.library_permission;
 
 import android.Manifest;
 import android.app.Activity;

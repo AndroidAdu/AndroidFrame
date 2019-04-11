@@ -1,4 +1,4 @@
-package com.dxy.library_permission.runTime;
+package com.dxy.library_permission;
 
 /**
  * Created by John on 2019/3/26.
