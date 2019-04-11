@@ -1,11 +1,10 @@
-package com.dxy.library_permission.installApk;
+package com.dxy.apk.install;
 
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 
-
-import com.dxy.library_permission.BuildConfig;
+import com.dxy.apk.BuildConfig;
 
 import java.io.File;
 

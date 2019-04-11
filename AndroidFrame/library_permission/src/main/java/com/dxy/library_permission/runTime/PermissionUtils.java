@@ -20,7 +20,7 @@ public class PermissionUtils {
     public static final String CAMERA = Manifest.permission.CAMERA;
     //电话权限
     public static final String CALL = Manifest.permission.CALL_PHONE;
-    //读写储存权限
+    //存储权限
     public static final String WRITE = Manifest.permission.WRITE_EXTERNAL_STORAGE;
     public static final String READ = Manifest.permission.READ_EXTERNAL_STORAGE;
     //联系人权限

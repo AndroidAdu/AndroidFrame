@@ -1,4 +1,4 @@
-package com.dxy.library_permission.installApk;
+package com.dxy.apk.install;
 
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
@@ -12,7 +12,7 @@ import android.view.View;
 import android.widget.Toast;
 
 
-import com.dxy.library_permission.R;
+import com.dxy.apk.R;
 
 import androidx.appcompat.app.AppCompatActivity;
 

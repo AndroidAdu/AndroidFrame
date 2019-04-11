@@ -1,1 +1,1 @@
-include ':app', ':library_tmvp', ':library_permission', ':liibrary_rule', ':library_utils', ':library_thread', ':library_animator'
+include ':app', ':library_tmvp', ':library_permission', ':liibrary_rule', ':library_utils', ':library_thread', ':library_animator', ':library_apk'

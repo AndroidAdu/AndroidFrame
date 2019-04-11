@@ -1,4 +1,4 @@
-package com.dxy.library_permission.installApk;
+package com.dxy.apk.install;
 
 import android.os.Build;
 

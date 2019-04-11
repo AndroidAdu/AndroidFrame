@@ -1,23 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.dxy.library_permission" >
-    <application
-        android:allowBackup="true" >
 
-        <!--安装未知来源权限-->
-        <activity android:name=".installApk.InstallUnknownResourceActivity"/>
-
-
-        <!--Android 7.0+ 文件私有权限需要临时授权-->
-        <provider
-            android:name="androidx.core.content.FileProvider"
-            android:authorities="${applicationId}.FileProvider"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_path" />
-        </provider>
-
-    </application>
 
 </manifest>
