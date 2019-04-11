@@ -22,16 +22,14 @@ import androidx.core.app.ActivityCompat;
 
 /**
  * Created by duxueyang on 2019/3/25.
- *  在DialogFragment中获取整个权限结果
- *
- *  权限获取弹窗
- *
+ * 在DialogFragment中获取整个权限结果
+ * 权限获取弹窗
  */
 
 public class PermissionFragment extends DialogFragment {
 
-    public static final String PermissionKEY="PermissionArray";
-    private  static  final int PermissonCode=1;
+    public static final String PermissionKEY = "PermissionArray";
+    private static final int PermissonCode = 1;
 
     private boolean permissionSataus;
 
@@ -41,21 +39,18 @@ public class PermissionFragment extends DialogFragment {
         this.permissionListener = permissionListener;
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_permission_content,container,false);
+        return inflater.inflate(R.layout.fragment_permission_content, container, false);
     }
-
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        String [] PermissionArray=getArguments().getStringArray(PermissionKEY);
-        permissionSataus= ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), PermissionArray[0]);
+        String[] PermissionArray = getArguments().getStringArray(PermissionKEY);
+        permissionSataus = ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), PermissionArray[0]);
         requestPermission(PermissionArray);
     }
-
 
     @Override
     public void onResume() {
@@ -70,18 +65,18 @@ public class PermissionFragment extends DialogFragment {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if(requestCode==PermissonCode){
-            if(grantResults!=null&&grantResults.length>0){
-                if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
+        if (requestCode == PermissonCode) {
+            if (grantResults != null && grantResults.length > 0) {
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     requestPermissionSuccess();
-                }else{
-                    if(!ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), permissions[0])&&!permissionSataus){
+                } else {
+                    if (!ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), permissions[0]) && !permissionSataus) {
                         rqeustRepeatPermission(permissions[0]);
-                    }else{
+                    } else {
                         requestPermissionFailure();
                     }
                 }
-            }else{
+            } else {
                 requestPermissionFailure();
 
             }
@@ -93,18 +88,18 @@ public class PermissionFragment extends DialogFragment {
      * 请求权限
      */
     @TargetApi(Build.VERSION_CODES.M)
-    private void requestPermission(String[] permissions){
-        if(permissions==null||permissions.length==0)  return;
-        requestPermissions(permissions,PermissonCode);
+    private void requestPermission(String[] permissions) {
+        if (permissions == null || permissions.length == 0) return;
+        requestPermissions(permissions, PermissonCode);
     }
 
 
     /**
      * 请求成功
      */
-    private void requestPermissionSuccess(){
+    private void requestPermissionSuccess() {
         dismiss();
-        if(permissionListener!=null){
+        if (permissionListener != null) {
             permissionListener.onSuccess();
         }
     }
@@ -112,9 +107,9 @@ public class PermissionFragment extends DialogFragment {
     /**
      * 请求失败
      */
-    private void requestPermissionFailure(){
+    private void requestPermissionFailure() {
         dismiss();
-        if(permissionListener!=null){
+        if (permissionListener != null) {
             permissionListener.onFailure();
         }
 
@@ -122,12 +117,13 @@ public class PermissionFragment extends DialogFragment {
 
     /**
      * 二次授权
+     *
      * @param permission
      */
-    private void rqeustRepeatPermission(String permission){
-        String permissionName=PermissionUtils.getPermissionName(permission);
-        new AlertDialog.Builder(getActivity(),R.style.Theme_AppCompat_Light_Dialog_Alert)
-                .setMessage("此功能需要"+permissionName+"，是否去授权？")
+    private void rqeustRepeatPermission(String permission) {
+        String permissionName = PermissionUtils.getPermissionName(permission);
+        new AlertDialog.Builder(getActivity(), R.style.Theme_AppCompat_Light_Dialog_Alert)
+                .setMessage("此功能需要" + permissionName + "，是否去授权？")
                 .setPositiveButton("去授权", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -152,7 +148,6 @@ public class PermissionFragment extends DialogFragment {
             }
         }).show();
     }
-
 
 
 }

@@ -1,7 +1,14 @@
 apply plugin: 'com.android.application'
 
+
+def releaseTime() {
+    return new Date().format("MMdd", TimeZone.getTimeZone("UTC"))
+}
+
 android {
     compileSdkVersion COMPILE_SDK as int
+
+    //默认配置
     defaultConfig {
         applicationId "com.dxy.androidframe"
         minSdkVersion MIN_SDK
@@ -9,15 +16,118 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
     }
-    buildTypes {
+
+    //签名设置
+    signingConfigs {
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            storeFile file("androidframe.jks")
+            storePassword "123456789"
+            keyAlias "keystore"
+            keyPassword "123456789"
+        }
+        debug {
+            storeFile file("debug.keystore")
         }
     }
+
+
+    //构建设置
+    buildTypes {
+
+        release {
+            signingConfig signingConfigs.release
+            //混淆
+            minifyEnabled true
+            //移除无用resouces文件
+            shrinkResources true
+            //zipalign优化
+            zipAlignEnabled true
+            proguardFiles 'proguard-rules.pro'
+            //自定义添加LOG_DEBUG 属性
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+        }
+
+        debug {
+            signingConfig signingConfigs.debug
+            minifyEnabled false
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+        }
+
+    }
+
+
+    //渠道类型
+    flavorDimensions "channel"
+    //测试代码
+//    flavorDimensions "channel","model"
+    //设置渠道
+    productFlavors {
+        flavors()
+
+
+
+//        android6{
+//            dimension "model"
+//        }
+//
+//        android7{
+//            dimension "model"
+//        }
+//
+//        android8{
+//            dimension "model"
+//        }
+//
+//        android9{
+//            dimension "model"
+//        }
+//
+//        qihu360 {
+//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "qihu360"]
+//            dimension "channel"
+//        }
+//
+//        baiduyun {
+//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "baiduyun"]
+//            dimension "channel"
+//        }
+//
+//        wandoujia {
+//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "wandoujia"]
+//            dimension "channel"
+//        }
+
+
+    }
+
+
+    //设置android 输出目录
+    android.applicationVariants.all { variant ->
+        // 更新至Android Studio 3.3 gradle 4.10.1
+        variant.outputs.all {
+//            outputFileName = "androidframe-${variant.productFlavors[0].name}-${variant.versionCode}-${variant.versionName}-${releaseTime()}.apk"
+            outputFileName = "androidframe-${variant.versionCode}-${variant.versionName}-${releaseTime()}.apk"
+        }
+    }
+
     buildToolsVersion BUILD_TOOLS
 
+}
+
+
+def flavors() {
+    // 所有渠道名
+    def path = './channels.txt'
+    file(path).eachLine {
+        line ->
+            if (!line.startsWith("//")) {
+                android.productFlavors.create(line, {
+                    manifestPlaceholders = [umeng_channel: name]
+                })
+            }
+    }
 }
 
 dependencies {
@@ -26,6 +136,12 @@ dependencies {
     implementation 'com.google.android.material:material:1.0.0-beta01'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'androidx.vectordrawable:vectordrawable:1.0.0-beta01'
+
+
+    implementation  'com.umeng.umsdk:analytics:8.0.0'
+    implementation  'com.umeng.umsdk:common:2.0.0'
+
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'

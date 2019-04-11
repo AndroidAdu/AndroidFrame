@@ -6,6 +6,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.umeng.commonsdk.UMConfigure;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -42,6 +43,9 @@ public class MainActivity extends AppCompatActivity {
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        //友盟初始化  参数三默认
+        UMConfigure.init(this, UMConfigure.DEVICE_TYPE_PHONE, null);
     }
 
 }
