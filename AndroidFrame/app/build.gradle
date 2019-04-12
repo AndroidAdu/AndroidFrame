@@ -63,14 +63,31 @@ android {
     }
 
 
-    //类型
+    //类型添加渠道
     flavorDimensions "channel"
     //测试代码，类型添加 渠道和机型
 //    flavorDimensions "channel","model"
     //设置渠道
     productFlavors {
+
+        //gradle for循环写法
         flavors()
 
+        //正常写法
+//        qihu360 {
+//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "qihu360"]
+//            dimension "channel"
+//        }
+//
+//        baiduyun {
+//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "baiduyun"]
+//            dimension "channel"
+//        }
+//
+//        wandoujia {
+//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "wandoujia"]
+//            dimension "channel"
+//        }
 
 
 //        android6{
@@ -88,21 +105,7 @@ android {
 //        android9{
 //            dimension "model"
 //        }
-//
-//        qihu360 {
-//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "qihu360"]
-//            dimension "channel"
-//        }
-//
-//        baiduyun {
-//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "baiduyun"]
-//            dimension "channel"
-//        }
-//
-//        wandoujia {
-//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "wandoujia"]
-//            dimension "channel"
-//        }
+
 
     }
 
@@ -128,6 +131,7 @@ def flavors() {
             if (!line.startsWith("//")) {
                 android.productFlavors.create(line, {
                     manifestPlaceholders = [umeng_channel: name]
+                    dimension "channel"
                 })
             }
     }
