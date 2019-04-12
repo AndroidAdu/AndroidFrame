@@ -1,5 +1,5 @@
-google_play
-xiaomi
-360
-meizu
-huawei
+channel_googlePlay
+channel_xiaomi
+channel_360
+channel_meizu
+channel_huawei

@@ -24,11 +24,16 @@ android {
         release {
             storeFile file("androidframe.jks")
             storePassword "123456789"
-            keyAlias "keystore"
-            keyPassword "123456789"
+            keyAlias "framekey"
+            keyPassword "987654321"
         }
         debug {
-            storeFile file("debug.keystore")
+//           storeFile file("debug.keystore")
+            //debug 模式下使用正式的签名文件（微信分享debub模式下需要正式签名）
+            storeFile file("androidframe.jks")
+            storePassword "123456789"
+            keyAlias "framekey"
+            keyPassword "987654321"
         }
     }
 
@@ -58,9 +63,9 @@ android {
     }
 
 
-    //渠道类型
+    //类型
     flavorDimensions "channel"
-    //测试代码
+    //测试代码，类型添加 渠道和机型
 //    flavorDimensions "channel","model"
     //设置渠道
     productFlavors {
@@ -99,16 +104,14 @@ android {
 //            dimension "channel"
 //        }
 
-
     }
 
 
-    //设置android 输出目录
+    //设置android apk的输出名称
     android.applicationVariants.all { variant ->
         // 更新至Android Studio 3.3 gradle 4.10.1
         variant.outputs.all {
-//            outputFileName = "androidframe-${variant.productFlavors[0].name}-${variant.versionCode}-${variant.versionName}-${releaseTime()}.apk"
-            outputFileName = "androidframe-${variant.versionCode}-${variant.versionName}-${releaseTime()}.apk"
+            outputFileName = "androidframe-${variant.productFlavors[0].name}-${variant.versionCode}-${variant.versionName}-${releaseTime()}.apk"
         }
     }
 
@@ -116,7 +119,7 @@ android {
 
 }
 
-
+//直接配置channels.txt 文件配置打包渠道
 def flavors() {
     // 所有渠道名
     def path = './channels.txt'
@@ -137,7 +140,7 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'androidx.vectordrawable:vectordrawable:1.0.0-beta01'
 
-
+    //添加友盟统计
     implementation  'com.umeng.umsdk:analytics:8.0.0'
     implementation  'com.umeng.umsdk:common:2.0.0'
 
