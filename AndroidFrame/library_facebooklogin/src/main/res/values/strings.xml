@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">library_facebookLogin</string>
+
+    <!--需要配置-->
+    <string name="facebook_app_id">272209463659683</string>
+    <string name="fb_login_protocol_scheme">fb272209463659683</string>
+
+</resources>

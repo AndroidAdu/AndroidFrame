@@ -1,10 +1,12 @@
 package com.dxy.androidframe;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.dxy.facebook.login.FBDemoActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.umeng.commonsdk.UMConfigure;
 
@@ -26,6 +28,10 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 case R.id.navigation_dashboard:
                     mTextMessage.setText(R.string.title_dashboard);
+
+                    //保存用户信息
+
+
                     return true;
                 case R.id.navigation_notifications:
                     mTextMessage.setText(R.string.title_notifications);
@@ -40,12 +46,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mTextMessage = (TextView) findViewById(R.id.message);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        mTextMessage = findViewById(R.id.message);
+        BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+
 
         //友盟初始化  参数三默认
         UMConfigure.init(this, UMConfigure.DEVICE_TYPE_PHONE, null);
+
+        Intent intent=new Intent(MainActivity.this, FBDemoActivity.class);
+        startActivity(intent);
     }
 
 }
