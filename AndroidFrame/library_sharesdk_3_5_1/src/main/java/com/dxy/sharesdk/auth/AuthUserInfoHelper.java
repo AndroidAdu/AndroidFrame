@@ -6,9 +6,7 @@ import cn.sharesdk.facebook.Facebook;
 import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.PlatformActionListener;
 import cn.sharesdk.framework.ShareSDK;
-import cn.sharesdk.sina.weibo.SinaWeibo;
-import cn.sharesdk.tencent.qq.QQ;
-import cn.sharesdk.wechat.friends.Wechat;
+
 
 
 /**
@@ -17,12 +15,12 @@ import cn.sharesdk.wechat.friends.Wechat;
  */
 public class AuthUserInfoHelper {
 
-    //QQ 平台
-    public static  final String PLATFORM_QQ= QQ.NAME;
-    //微博 平台
-    public static  final String PLATFORM_SinaWeibo= SinaWeibo.NAME;
-    //微信 平台
-    public static  final String PLATFORM_WeChat= Wechat.NAME;
+//    //QQ 平台
+//    public static  final String PLATFORM_QQ= QQ.NAME;
+//    //微博 平台
+//    public static  final String PLATFORM_SinaWeibo= SinaWeibo.NAME;
+//    //微信 平台
+//    public static  final String PLATFORM_WeChat= Wechat.NAME;
     //Facebook 平台
     public static  final String PLATFORM_FaceBook= Facebook.NAME;
 

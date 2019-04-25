@@ -29,59 +29,61 @@ MobSDK {
     appKey ""
     appSecret ""
 
+
+
     ShareSDK {
         //平台配置信息
         devInfo {
 
-//            QQ {
-//                id 1
-//                sortId 1
-//                appId ""
-//                appKey ""
-//                shareByAppClient true
-//                enable true
-//            }
-//
-//            QZone {
-//                id 2
-//                sortId 2
-//                appId ""
-//                appKey ""
-//                shareByAppClient true
-//                bypassApproval false
-//                enable true
-//            }
-//
-//            Wechat {
-//                id 3
-//                sortId 3
-//                appId ""
-//                appSecret ""
-//                withShareTicket true
-//                miniprogramType 0
-//                bypassApproval false
-//                enable true
-//            }
-//
-//            WechatMoments {
-//                id 4
-//                sortId 4
-//                appId ""
-//                appSecret ""
-//                bypassApproval false
-//                enable true
-//            }
-//
-//            SinaWeibo {
-//                id 5
-//                sortId 5
-//                appKey ""
-//                appSecret ""
-//                callbackUri ""
-//                //可以使用客户端进行分享
-//                shareByAppClient true
-//                enable true
-//            }
+            QQ {
+                id 1
+                sortId 1
+                appId ""
+                appKey ""
+                shareByAppClient true
+                enable true
+            }
+
+            QZone {
+                id 2
+                sortId 2
+                appId ""
+                appKey ""
+                shareByAppClient true
+                bypassApproval false
+                enable true
+            }
+
+            Wechat {
+                id 3
+                sortId 3
+                appId ""
+                appSecret ""
+                withShareTicket true
+                miniprogramType 0
+                bypassApproval false
+                enable true
+            }
+
+            WechatMoments {
+                id 4
+                sortId 4
+                appId ""
+                appSecret ""
+                bypassApproval false
+                enable true
+            }
+
+            SinaWeibo {
+                id 5
+                sortId 5
+                appKey ""
+                appSecret ""
+                callbackUri ""
+                //可以使用客户端进行分享
+                shareByAppClient true
+                enable true
+            }
 
             Facebook {
                 id 6
