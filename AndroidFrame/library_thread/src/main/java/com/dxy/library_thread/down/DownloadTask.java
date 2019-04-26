@@ -11,26 +11,27 @@ public class DownloadTask {
 
     /**
      * 下载状态
+     * 01 10 100 1000 10000
      */
-    // 等待调度
+    // 等待调度  01
     public static final int RES_STATUS_IDLE = 1;
-    // 下载中
+    // 下载中  10
     public static final int RES_STATUS_DOWNLOADING = 2;
-    // 下载暂停
-    public static final int RES_STATUS_PAUSE = 3;
-    // 下载完毕
-    public static final int RES_STATUS_FINISHED = 4;
-    // 下载时发现错误
-    public static final int RES_STATUS_ERROR = 5;
+    // 下载暂停 100
+    public static final int RES_STATUS_PAUSE = 4;
+    // 下载完毕 1000
+    public static final int RES_STATUS_FINISHED = 8;
+    // 下载时发现错误  10000
+    public static final int RES_STATUS_ERROR = 16;
     /**
      * 错误代码
      */
     // 无错误
-    public static final int ERR_OK = 6;
+    public static final int ERR_OK = 0;
     // 无效链接错误
-    public static final int ERR_DEAD_URL = 7;
+    public static final int ERR_DEAD_URL = 1;
     // 网络错误
-    public static final int ERR_NET_IO = 8;
+    public static final int ERR_NET_IO = 2;
 
 
     /**

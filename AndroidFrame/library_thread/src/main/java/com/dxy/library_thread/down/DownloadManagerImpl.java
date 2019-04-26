@@ -17,11 +17,14 @@ public interface DownloadManagerImpl {
     //恢复所有任务
     void resumeAllTask();
 
-    //开启所有任务
-    void startAllTask(int taskStatus);
+    //开启所有想要启动任务
+    int startAllTask(int conformStatus);
 
     //清除所有下载完成任务
     void clearAllFinishedTask();
+
+    //启动空闲任务
+    void ScheduleIdleTask();
 
 
 }
