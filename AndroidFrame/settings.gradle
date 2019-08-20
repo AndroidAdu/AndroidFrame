@@ -1,1 +1,1 @@
-include ':app', ':library_tmvp', ':library_RuntimePermission', ':liibrary_rule', ':library_utils', ':library_thread', ':library_animator', ':library_apk', ':library_sharesdk_3_5_1', ':library_facebook', ':library_designpatterns'
+include ':app', ':library_tmvp', ':library_RuntimePermission', ':liibrary_rule', ':library_utils', ':library_thread', ':library_animator', ':library_apk', ':library_sharesdk_3_5_1', ':library_facebook', ':library_designpatterns', ':testJava'
