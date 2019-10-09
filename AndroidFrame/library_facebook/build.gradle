@@ -29,6 +29,7 @@ dependencies {
 
     //facebook登录
     implementation 'com.facebook.android:facebook-login:4.33.0'
+    implementation 'com.facebook.android:facebook-share:4.33.0'
 
 
     implementation 'androidx.appcompat:appcompat:1.0.0-beta01'

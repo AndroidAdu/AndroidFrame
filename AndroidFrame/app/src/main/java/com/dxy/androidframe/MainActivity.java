@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.dxy.facebook.login.FBDemoActivity;
+import com.dxy.facebook.share.ShareFBActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.umeng.commonsdk.UMConfigure;
 
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         //友盟初始化  参数三默认
         UMConfigure.init(this, UMConfigure.DEVICE_TYPE_PHONE, null);
 
-        Intent intent=new Intent(MainActivity.this, FBDemoActivity.class);
+        Intent intent=new Intent(MainActivity.this, ShareFBActivity.class);
         startActivity(intent);
     }
 

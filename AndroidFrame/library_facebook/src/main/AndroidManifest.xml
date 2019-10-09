@@ -3,15 +3,24 @@
     package="com.dxy.facebook">
 
     <application>
-        <activity android:name="com.dxy.facebook.DeepLinkingActivity"></activity>
-        <activity android:name="com.dxy.facebook.login.FBDemoActivity" /> <!-- facebook -->
+        <activity android:name=".share.ShareFBActivity"/>
+
+        <activity android:name=".DeepLinkingActivity" />
+
+        <activity android:name=".login.FBDemoActivity" />
+
+        <!-- facebook -->
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id" /> <!-- facebook 登录配置 -->
+            android:value="@string/facebook_app_id" />
+
+        <!-- facebook 登录配置 -->
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name" />
+
+
         <activity
             android:name="com.facebook.CustomTabActivity"
             android:exported="true">
@@ -24,6 +33,13 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
+
+        <!-- facebook分享设置 -->
+        <provider
+            android:name="com.facebook.FacebookContentProvider"
+            android:authorities="com.facebook.app.FacebookContentProvider272209463659683"
+            android:exported="true" />
+
     </application>
 
 </manifest>
